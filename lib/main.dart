@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:helloworld/utils/routes.dart';
 import 'pages/home.dart';
 import 'pages/login_page.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/login',
       routes: {
         "/": (context) => MyHomePage(title: 'Flutter Home Page'),
-        "/login": (context) => LoginPage()
+        MyRoutes.loginRoute: (context) => LoginPage()
       },
       // A widget which will be started on application startup
       // home: MyHomePage(title: 'Flutter Home Page')
