@@ -16,12 +16,17 @@ class MyApp extends StatelessWidget {
       // Application theme data, you can set the colors for the application as
       // you want
       themeMode: ThemeMode.light,
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
-        fontFamily: GoogleFonts.lato().fontFamily,
-      ),
+          primarySwatch: Colors.deepPurple,
+          fontFamily: GoogleFonts.lato().fontFamily,
+          appBarTheme: AppBarTheme(
+              color: Colors.white,
+              elevation: 0.0,
+              iconTheme: IconThemeData(color: Colors.black),
+              foregroundColor: Colors.black)),
       darkTheme: ThemeData(brightness: Brightness.dark),
-      initialRoute: '/login',
+      initialRoute: MyRoutes.loginRoute,
       routes: {
         "/": (context) => MyHomePage(title: 'Flutter Home Page'),
         MyRoutes.loginRoute: (context) => LoginPage()

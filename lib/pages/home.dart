@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:helloworld/models/catlog.dart';
+import '../widget/drawer.dart';
+import '../models/catlog.dart';
+import '../widget/item_widget.dart';
 
 class MyHomePage extends StatelessWidget {
   final String title;
@@ -9,14 +13,14 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         // The title text which will be shown on the action bar
-        title: Text(title),
+        title: Text(title, style: TextStyle(fontWeight: FontWeight.bold)),
       ),
-      body: Center(
-        child: Text(
-          'Hello, World!',
-        ),
-      ),
-      drawer: Drawer(),
+      body: ListView.builder(
+          itemCount: CatalogModel.items.length,
+          itemBuilder: (context, index) {
+            return ItemWidget(item: CatalogModel.items[index]);
+          }),
+      drawer: MyDrawer(),
     );
   }
 }
