@@ -8,7 +8,7 @@
         "price": 900,
         "color": "black",
         "image":
-                "https://cdn.dxomark.com/wp-content/uploads/medias/post-61183/iphone-12-pro-blue-hero.jpg"
+                "assets/images/iphone12pro.jpg"
     },
     {
         "id": 2,
@@ -17,7 +17,7 @@
         "price": 880,
         "color": "black",
         "image":
-                "data:image/jpeg;base64,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"
+                "assets/images/iphone13pro.jpg"
     },
     {
         "id": 3,
@@ -26,7 +26,43 @@
         "price": 574,
         "color": "black",
         "image":
-                "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1708672357/Croma%20Assets/Communication/Mobiles/Images/300684_0_gmkksh.png?tr=w-640"
+                "assets/images/iphone15.webp"
+    },
+    {
+        "id": 4,
+        "name": "iphone 15",
+        "desc": "apple iphone 12th generation",
+        "price": 574,
+        "color": "black",
+        "image":
+                "assets/images/iphone15.webp"
+    },
+    {
+        "id": 5,
+        "name": "iphone 15",
+        "desc": "apple iphone 12th generation",
+        "price": 574,
+        "color": "black",
+        "image":
+                "assets/images/iphone15.webp"
+    },
+    {
+        "id": 6,
+        "name": "iphone 15",
+        "desc": "apple iphone 12th generation",
+        "price": 574,
+        "color": "black",
+        "image":
+                "assets/images/iphone15.webp"
+    },
+    {
+        "id": 7,
+        "name": "iphone 15",
+        "desc": "apple iphone 12th generation",
+        "price": 574,
+        "color": "black",
+        "image":
+                "assets/images/iphone15.webp"
     }
 ]
 }

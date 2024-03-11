@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:helloworld/models/cart.dart';
 import 'dart:convert';
 import 'package:helloworld/models/catlog.dart';
+import 'package:helloworld/pages/home_detail_page.dart';
+import 'package:helloworld/utils/routes.dart';
 import '../widget/drawer.dart';
 import '../models/catlog.dart';
 import '../widget/item_widget.dart';
+import '../pages/home_detail_page.dart';
 import 'package:velocity_x/velocity_x.dart';
+import '../utils/routes.dart';
+import '../widget/add_to_cart.dart';
 
 class MyHomePage extends StatefulWidget {
   final String title;
@@ -35,20 +41,25 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SafeArea(
-      child: Container(
-        padding: Vx.m32,
-        child: Column(
-          children: [
-            calatlogHeader(),
-            if (CatalogModel.items != null && CatalogModel.items.isNotEmpty)
-              CatalogList().expand()
-            else
-              CircularProgressIndicator().centered().expand(),
-          ],
+        floatingActionButton: FloatingActionButton(
+          onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoute),
+          backgroundColor: Color(0xff848481),
+          child: Icon(Icons.shopping_cart),
         ),
-      ),
-    ));
+        body: SafeArea(
+          child: Container(
+            padding: Vx.m32,
+            child: Column(
+              children: [
+                calatlogHeader(),
+                if (CatalogModel.items != null && CatalogModel.items.isNotEmpty)
+                  CatalogList().py16().expand()
+                else
+                  CircularProgressIndicator().centered().expand(),
+              ],
+            ),
+          ),
+        ));
   }
 }
 
@@ -58,8 +69,8 @@ class calatlogHeader extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        'Catalog App'.text.xl5.bold.color(Colors.deepOrangeAccent).make(),
-        'Trending Product'.text.xl2.make(),
+        'Catalog App'.text.xl5.bold.color(Color(0xff848481)).make(),
+        'Trending Products'.text.xl2.make(),
       ],
     );
   }
@@ -73,7 +84,12 @@ class CatalogList extends StatelessWidget {
         itemCount: CatalogModel.items.length,
         itemBuilder: (context, index) {
           final catalog = CatalogModel.items[index];
-          return CatalogItem(item: catalog);
+          return InkWell(
+              onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => HomeDetailPage(item: catalog))),
+              child: CatalogItem(item: catalog));
         });
   }
 }
@@ -87,7 +103,9 @@ class CatalogItem extends StatelessWidget {
     return VxBox(
         child: Row(
       children: [
-        CatalogImage(image: item.image),
+        Hero(
+            tag: Key(item.id.toString()),
+            child: CatalogImage(image: item.image)),
         Expanded(
             child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -101,11 +119,7 @@ class CatalogItem extends StatelessWidget {
               buttonPadding: Vx.mOnly(right: 16),
               children: [
                 '\$${item.price}'.text.bold.xl.make(),
-                ElevatedButton(
-                    onPressed: () {},
-                    style: ButtonStyle(
-                        shape: MaterialStateProperty.all(StadiumBorder())),
-                    child: 'Buy'.text.make())
+                AddToCart(catalog: item)
               ],
             )
           ],
@@ -121,13 +135,13 @@ class CatalogImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.network(image)
+    return Image.asset(image)
         .box
         .rounded
-        .color(Colors.teal)
+        .color(Color(0xffecebea))
         .p8
         .make()
         .p8()
-        .w40(context);
+        .w32(context);
   }
 }

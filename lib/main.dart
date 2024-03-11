@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:helloworld/pages/cart_page.dart';
 import 'package:helloworld/utils/routes.dart';
+import 'package:velocity_x/velocity_x.dart';
+import 'core/store.dart';
 import 'pages/home.dart';
 import 'pages/login_page.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'pages/cart_page.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(VxState(store: MayStore(), child: MyApp()));
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -15,7 +19,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Hello World',
       // Application theme data, you can set the colors for the application as
       // you want
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           primarySwatch: Colors.deepPurple,
@@ -29,7 +33,8 @@ class MyApp extends StatelessWidget {
       initialRoute: MyRoutes.homeRoute,
       routes: {
         "/": (context) => MyHomePage(title: 'Flutter Home Page'),
-        MyRoutes.loginRoute: (context) => LoginPage()
+        MyRoutes.loginRoute: (context) => LoginPage(),
+        MyRoutes.cartRoute: (context) => CartPage()
       },
       // A widget which will be started on application startup
       // home: MyHomePage(title: 'Flutter Home Page')
