@@ -6,9 +6,9 @@ import 'core/store.dart';
 import 'pages/home.dart';
 import 'pages/login_page.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'pages/cart_page.dart';
 
-void main() => runApp(VxState(store: MayStore(), child: MyApp()));
+// final store = MyStore();
+void main() => runApp(VxState(store: MyStore(), child: MyApp()));
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
